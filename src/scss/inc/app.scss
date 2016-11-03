@@ -1,0 +1,147 @@
+body{
+  #app{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #2A4769;
+    overflow: hidden;
+    .main-container{
+      min-height: 100%;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #FDD519;
+      margin: auto;
+      // @include media-query(tablet){
+      //   padding-right: 20px;
+      //   padding-left: 20px;
+      // }
+      // @include media-query(phone){
+      //   padding-right: 10px;
+      //   padding-left: 10px;
+      // }
+      .logo-container{
+        display: block;
+        height: 100px;
+        width: 100%;
+        background-color: lightgreen;
+        .logo{
+          line-height: 100px;
+          font-size: 3em;
+          text-align: center;
+        }
+
+      }
+      .dynamic-content{
+        min-height: 50vh;
+        background-color: #FF8D00;
+
+        // cards
+        .card-deck{
+          position: relative;
+          li{
+            border: 1px solid #ccc;
+            &#front{
+              // z-index: 10000;
+            }
+            &#back{
+              // z-index: 999;
+            }
+            position:absolute;
+            display: block;
+            width:280px;
+            height: 350px;
+            background-color: white;
+            margin:auto;
+            border-radius: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            .card-data{
+              position: absolute;
+              display: block;
+              width: 50px;
+              height: 50px;
+              padding:10px;
+              span{
+                display:block;
+                font-size: 2em;
+                text-align: center;
+              }
+              &.top{
+                top:0;
+                bottom:0;
+              }
+              &.bottom{
+                right:0;
+                bottom: 0;
+                transform: rotate(180deg);
+              }
+            }
+            .exercise-data{
+              min-height: 100%;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              .number{
+                font-size: 3em;
+                padding-bottom: 10px;
+              }
+              .exercise{
+                font-size: 2em;
+                text-transform: uppercase;
+              }
+            }
+          }
+          li.dec-card{
+            &#first{
+
+              transform: translateY(6px) translateX(calc(-50% - 6px));
+
+            }
+            &#second{
+
+              transform: translateY(4px) translateX(calc(-50% - 4px));
+              // transform: ;
+            }
+            &#third{
+
+              transform: translateY(2px) translateX(calc(-50% - 2px));
+              // transform: ;
+            }
+          }
+        }
+        #next{
+          width: 150px;
+          height: 50px;
+          display: block;
+          margin: auto;
+          margin-top: 400px;
+        }
+
+      }
+    }
+    .signature-container{
+      // display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      @include media-query(phone){
+        bottom: 0;
+        right: 0;
+        top: 10px;
+        left: 10px;
+      }
+      i{
+        color: white;
+        line-height: 24px;
+        font-size: 24px;
+
+      }
+
+    }
+  }
+}
