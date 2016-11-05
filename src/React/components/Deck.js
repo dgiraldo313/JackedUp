@@ -12,6 +12,7 @@ const CreateCardDeck = (ExerciseList) => {
       let Suit = suit;
 
       // get exercise depending on suit
+      let Exercise = ExerciseList[Suit].exercise;
 
       // store rank of card
       let Rank = rank;
@@ -27,11 +28,14 @@ const CreateCardDeck = (ExerciseList) => {
                 };
 
       // add card object to deck
+      deck.push(Card);
     });
   });
 };
 
+const ShuffleCardDeck = () => {
   // get our own copy of the Cards array
+  let cardArray =  deck.slice();
 
   // shuffle the cards
   let currentIndex = cardArray.length;
@@ -50,5 +54,8 @@ const CreateCardDeck = (ExerciseList) => {
 };
 
 const BuildDeck = (ExerciseList) => {
+  let CardDeck = CreateCardDeck(ExerciseList);
+  return ShuffleCardDeck(CardDeck);
 };
 
+export { BuildDeck };
