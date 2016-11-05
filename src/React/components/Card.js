@@ -11,13 +11,15 @@ class Card extends Component {
   }
   SuitSymbol() {
     if( this.suit === 'SPADES'){
-      return ( <span className="suite">&spades;</span>);
+      return ( <span className="suit">&spades;</span>);
     }else if ( this.suit === 'HEARTS') {
-      return ( <span className="suite">&hearts;</span>);
+      return ( <span className="suit">&hearts;</span>);
     }else if (this.suit === 'CLUBS') {
-      return ( <span className="suite">&clubs;</span>);
+      return ( <span className="suit">&clubs;</span>);
     }else if (this.suit === 'DIAMONDS') {
-      return ( <span className="suite">&diams;</span>);
+      return ( <span className="suit">&diams;</span>);
+    }else{
+      return ( <span className="suit"><i className="fa fa-spin fa-star" aria-hidden="true"></i></span>);
     }
 
   }

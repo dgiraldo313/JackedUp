@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import './scss/styles.scss';
 
 // get routes - will load the approapiate components
-import App from './components/App';
+import App from './React/App';
 
 import routes from './router';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-// load components
-import Workout from './pages/Workout';
+// load views
+import Workout from './views/Workout';
 
 //import widgets
 
@@ -11,33 +11,33 @@ class App extends Component {
 
     // list of states for application
     this.state = {
-                  HEARTS: {
-                    exercise: null,
-                    reps: null,
-                  },
-                  DIAMOND: {
-                    exercise: null,
-                    reps: null,
-                  },
-                  SPADES: {
-                    exercise: null,
-                    reps: null,
-                  },
-                  CLUBS: {
-                    exercise: null,
-                    reps: null,
+                  CardsData: {
+                    HEARTS: {
+                      exercise: 'push ups',
+                      reps: 0,
+                    },
+                    DIAMONDS: {
+                      exercise: 'sit ups',
+                      reps: 0,
+                    },
+                    SPADES: {
+                      exercise: 'burpes',
+                      reps: 0,
+                    },
+                    CLUBS: {
+                      exercise: 'pull ups',
+                      reps: 0,
+                    },
                   },
                   FinalTime: null,
-                  WorkoutFinished: false,
+                  WorkoutCompleted: false,
                 };
 
   }
 
   // Helper function to facilitate state change from other components
   refreshState(state) {
-    this.setState({
-            state,
-          });
+    this.setState(state);
   }
 
   render() {

@@ -5,13 +5,10 @@ import React from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 
 // import components for the different pages
-import App from './components/App';
-import Welcome from './components/pages/Welcome';
-import Workout from './components/pages/Workout';
-
-// import content
-// import Content from './data/Content';
-console.log(App.props);
+import App from './React/App';
+import Welcome from './React/views/Welcome';
+import Workout from './React/views/Workout';
+import Results from './React/views/Results';
 
 //Routes
 const routes = (
@@ -19,6 +16,7 @@ const routes = (
     <Route  component={ App }>
       <Route path="/" component={ Welcome } />
       <Route path="working" component={ Workout } />
+      <Route path="results" component={ Results } />
     </Route>
   </Router>
 );
