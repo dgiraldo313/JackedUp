@@ -3,10 +3,7 @@ import { Router } from 'react-router';
 
 // import app components
 import Card from '../components/Card';
-import ControlButton from '../components/ControlButton';
 import WorkoutProgress from '../components/WorkoutProgress';
-import ResetWorkout from '../components/ResetWorkout';
-import PauseWorkout from '../components/PauseWorkout';
 import WorkoutControls from '../components/WorkoutControls';
 
 // import Deck component (Builds deck on workout configuration)
