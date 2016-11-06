@@ -5,6 +5,7 @@ import { Router } from 'react-router';
 import Card from '../components/Card';
 import WorkoutProgress from '../components/WorkoutProgress';
 import WorkoutControls from '../components/WorkoutControls';
+import Timer from '../components/Timer';
 
 // import Deck component (Builds deck on workout configuration)
 import { BuildDeck } from '../components/Deck';
@@ -52,7 +53,7 @@ class Workout extends Component {
   //function helper to refresh state
   // function is passed to children for state manipulation
   refreshState(state) {
-    this.setState(state);
+    this.refresh(state);
   }
 
   configureWorkout() {
@@ -128,7 +129,7 @@ class Workout extends Component {
     // check to make sure user is not done with workout
     if (this.state.CardsQueue.length - 1 < this.state.totalCards) {
       // get card firts card in deck of cards
-      let currCard = this.state.CardDeck[currIndex];
+      let currCard = this.state.CardDeck[0];
 
       // increment count of reps
       this.incrementReps(currCard);
@@ -145,9 +146,10 @@ class Workout extends Component {
       this.state.CardsQueue.push(currCard);
 
       //remove card from current card deck
-      // this.CardDeck.splice(0, 1);
+      this.state.CardDeck.splice(0, 1);
+
       //instead increment index
-      this.state.currIndex = currIndex + 1;
+      // this.state.currIndex = currIndex + 1;
 
       //update state of workout
       this.setState(this.state);
@@ -168,6 +170,8 @@ class Workout extends Component {
   resetWorkout() {
     // change status to INITIAL
     this.state.WorkoutStatus = 'INITIAL';
+
+    //move index back to 1
 
     // remove cards from CardsQueue
     this.state.CardsQueue.length = 0;
@@ -199,6 +203,8 @@ class Workout extends Component {
   render() {
     return (
         <div className="card-deck">
+          <Timer state= {this.state.WorkoutStatus}
+               refresh= {function (state) { this.refreshState(state); }.bind(this) } />
           <li id="front" style={{ zIndex: '99' }}>
             <div className="card-data top">
               <span className="suite">&spades;</span>
@@ -236,7 +242,8 @@ class Workout extends Component {
           </a>
           <div className ="cards-progress">
             <WorkoutProgress completed={ this.state.CardsQueue.length - 1 }
-                           totalCards={ this.state.totalCards } />
+                           totalCards={ this.state.totalCards }
+                            />
           </div>
           <WorkoutControls state= {this.state.WorkoutStatus}
                           finish= {this.state.CardsQueue.length - 1 === this.state.totalCards}
