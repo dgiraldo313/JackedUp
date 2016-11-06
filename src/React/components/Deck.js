@@ -1,7 +1,7 @@
 // builds random deck of card and assigng workout depending on the suit of card
-let deck = [];
 
 const CreateCardDeck = (ExerciseList) => {
+  let deck = [];
   let Suits = ['DIAMONDS', 'SPADES', 'CLUBS', 'HEARTS'];
   let Ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
@@ -31,9 +31,10 @@ const CreateCardDeck = (ExerciseList) => {
       deck.push(Card);
     });
   });
+  return deck;
 };
 
-const ShuffleCardDeck = () => {
+const ShuffleCardDeck = (deck) => {
   // get our own copy of the Cards array
   let cardArray =  deck.slice();
 

@@ -3,6 +3,11 @@ import { Router } from 'react-router';
 
 // import app components
 import Card from '../components/Card';
+import ControlButton from '../components/ControlButton';
+import WorkoutProgress from '../components/WorkoutProgress';
+import ResetWorkout from '../components/ResetWorkout';
+import PauseWorkout from '../components/PauseWorkout';
+import WorkoutControls from '../components/WorkoutControls';
 
 // import Deck component (Builds deck on workout configuration)
 import { BuildDeck } from '../components/Deck';
@@ -19,12 +24,12 @@ class Workout extends Component {
     this.state = {
       CardsCompleted: [],
       WorkoutStatus: 'INITIAL',
+      CardDeck: null,
+      currIndex: 0,
       CardsQueue: [],
       totalCards: null,
 
     };
-
-    // global variable to store card deck
 
     // function used to refresh state of app
     this.refresh = this.props.refresh;
@@ -42,6 +47,11 @@ class Workout extends Component {
 
   }
 
+  componentWillUnmount() {
+    //clean up state
+    console.log('bye');
+  }
+
   //function helper to refresh state
   // function is passed to children for state manipulation
   refreshState(state) {
@@ -49,14 +59,14 @@ class Workout extends Component {
   }
 
   configureWorkout() {
+    // make sure rep count is 0
+    this.resetReps();
+
     //get list of excercises by card suit
     let ExerciseList = this.props.state.CardsData;
 
     // build shuffled card Deck
-    // console.log(BuildDeck(ExerciseList));
-    this.CardDeck = BuildDeck(ExerciseList);
-
-    // console.log('New deck: ', this.CardDeck);
+    this.state.CardDeck = BuildDeck(ExerciseList);
 
     // add initial card to queue
     let initialCard = { suit: 'start',
@@ -66,10 +76,12 @@ class Workout extends Component {
                       };
     this.state.CardsQueue.push(initialCard);
 
-    // initialize stat of the app
-    this.setState({
-      totalCards: this.CardDeck.length,
-    });
+    //set total number of cards in deck
+    //****this keeps in mind future functionality of adding additional cards****
+    this.state.totalCards = this.state.CardDeck.length;
+
+    // initialize state of the app
+    this.setState(this.state);
 
   }
 
@@ -98,12 +110,28 @@ class Workout extends Component {
     this.refresh(this.props.state);
   }
 
+  //reset reps
+  resetReps(card) {
+    // reset all rep count back to 0
+    this.props.state.CardsData.HEARTS.reps = 0;
+    this.props.state.CardsData.DIAMONDS.reps = 0;
+    this.props.state.CardsData.CLUBS.reps = 0;
+    this.props.state.CardsData.SPADES.reps = 0;
+
+    // refresh app state
+    this.refresh(this.props.state);
+
+  }
+
   // next card handler
   nextCard() {
+    //index of current cards
+    let currIndex = this.state.currIndex;
+
     // check to make sure user is not done with workout
     if (this.state.CardsQueue.length - 1 < this.state.totalCards) {
       // get card firts card in deck of cards
-      let currCard = this.CardDeck[0];
+      let currCard = this.state.CardDeck[currIndex];
 
       // increment count of reps
       this.incrementReps(currCard);
@@ -118,13 +146,40 @@ class Workout extends Component {
 
       // move card to queue and change state of current list
       this.state.CardsQueue.push(currCard);
-      this.setState(this.state);
 
       //remove card from current card deck
-      this.CardDeck.splice(0, 1);
+      // this.CardDeck.splice(0, 1);
+      //instead increment index
+      this.state.currIndex = currIndex + 1;
+
+      //update state of workout
+      this.setState(this.state);
     } else {
       this.endWorkout();
     }
+  }
+
+  // pause workout
+  pauseWorkout() {
+    this.state.WorkoutStatus = 'STOPPED';
+
+    //update state
+    this.setState(this.state);
+  }
+
+  //restart workout
+  resetWorkout() {
+    // change status to INITIAL
+    this.state.WorkoutStatus = 'INITIAL';
+
+    // remove cards from CardsQueue
+    this.state.CardsQueue.length = 0;
+
+    //update state
+    this.setState(this.state);
+
+    // configute new workout
+    this.configureWorkout();
   }
 
   endWorkout() {
@@ -142,32 +197,6 @@ class Workout extends Component {
 
     //finally redirect to results page
     this.context.router.push('/results');
-  }
-
-  // creates dynamic button with different names depending on state of workout
-  controlButton() {
-    let message;
-    let state = this.state.WorkoutStatus;
-    if (state === 'INITIAL') {
-      message = 'start';
-    }else if (this.state.CardsQueue.length - 1 === this.state.totalCards) {
-      // add finish button right before workout ends
-      message = 'finish';
-    }else if (state === 'INPROGRESS') {
-      message = 'next';
-    }else if (state === 'STOPPED') {
-      message = 'continue';
-    }
-
-    return (<button onClick={this.nextCard}>{message}</button>);
-  }
-
-  //get total number of cards completed out of cards in deck
-  cardsCompleted() {
-    let cardsCompleted = this.state.CardsQueue.length - 1;
-    let totalCards = this.state.totalCards;
-
-    return (<div> {cardsCompleted + '/' + totalCards }</div>);
   }
 
   render() {
@@ -209,12 +238,15 @@ class Workout extends Component {
               }
           </a>
           <div className ="cards-progress">
-            { this.cardsCompleted() }
+            <WorkoutProgress completed={ this.state.CardsQueue.length - 1 }
+                           totalCards={ this.state.totalCards } />
           </div>
-          <div>
-            { this.controlButton() }
-          </div>
-
+          <WorkoutControls state= {this.state.WorkoutStatus}
+                          finish= {this.state.CardsQueue.length - 1 === this.state.totalCards}
+                        nextCard= {function () { this.nextCard(); }.bind(this) }
+                           pause= {function () { this.pauseWorkout(); }.bind(this)}
+                           reset= {function () { this.resetWorkout(); }.bind(this)}
+                          />
         </div>
     );
   }
