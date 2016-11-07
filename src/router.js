@@ -6,7 +6,7 @@ import { Router, Route, hashHistory } from 'react-router';
 
 // import components for the different pages
 import App from './React/App';
-import Welcome from './React/views/Welcome';
+import Setup from './React/views/Setup';
 import Workout from './React/views/Workout';
 import Results from './React/views/Results';
 
@@ -14,7 +14,7 @@ import Results from './React/views/Results';
 const routes = (
   <Router history={ hashHistory }>
     <Route  component={ App }>
-      <Route path="/" component={ Welcome } />
+      <Route path="/" component={ Setup } />
       <Route path="working" component={ Workout } />
       <Route path="results" component={ Results } />
     </Route>

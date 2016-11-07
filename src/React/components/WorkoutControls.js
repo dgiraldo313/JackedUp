@@ -8,7 +8,6 @@ class WorkoutControls extends Component {
   }
 
   message() {
-    console.log(this.props.state);
     let message;
     if (this.props.state === 'INITIAL') {
       message = 'start';

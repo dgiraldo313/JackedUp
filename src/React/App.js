@@ -13,19 +13,19 @@ class App extends Component {
     this.state = {
                   CardsData: {
                     HEARTS: {
-                      exercise: 'push ups',
+                      exercise: '',
                       reps: 0,
                     },
                     DIAMONDS: {
-                      exercise: 'sit ups',
+                      exercise: '',
                       reps: 0,
                     },
                     SPADES: {
-                      exercise: 'burpes',
+                      exercise: '',
                       reps: 0,
                     },
                     CLUBS: {
-                      exercise: 'pull ups',
+                      exercise: '',
                       reps: 0,
                     },
                   },
