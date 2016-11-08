@@ -202,9 +202,10 @@ class Workout extends Component {
 
   render() {
     return (
-        <div className="card-deck">
-          <Timer state= {this.state.WorkoutStatus}
+      <div id="workout">
+        <Timer state= {this.state.WorkoutStatus}
                refresh= {function (state) { this.refreshState(state); }.bind(this) } />
+        <div className="card-deck">
           <li id="front" style={{ zIndex: '99' }}>
             <div className="card-data top">
               <span className="suite">&spades;</span>
@@ -240,18 +241,20 @@ class Workout extends Component {
                                 })
               }
           </a>
-          <div className ="cards-progress">
-            <WorkoutProgress completed={ this.state.CardsQueue.length - 1 }
-                           totalCards={ this.state.totalCards }
-                            />
-          </div>
-          <WorkoutControls state= {this.state.WorkoutStatus}
-                          finish= {this.state.CardsQueue.length - 1 === this.state.totalCards}
-                        nextCard= {function () { this.nextCard(); }.bind(this) }
-                           pause= {function () { this.pauseWorkout(); }.bind(this)}
-                           reset= {function () { this.resetWorkout(); }.bind(this)}
+
+        </div>
+        <div className ="cards-progress">
+          <WorkoutProgress completed={ this.state.CardsQueue.length - 1 }
+                         totalCards={ this.state.totalCards }
                           />
         </div>
+        <WorkoutControls state= {this.state.WorkoutStatus}
+                        finish= {this.state.CardsQueue.length - 1 === this.state.totalCards}
+                      nextCard= {function () { this.nextCard(); }.bind(this) }
+                         pause= {function () { this.pauseWorkout(); }.bind(this)}
+                         reset= {function () { this.resetWorkout(); }.bind(this)}
+                        />
+      </div>
     );
   }
 

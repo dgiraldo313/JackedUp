@@ -13,10 +13,6 @@ class SetupForm extends Component {
     this.refresh = this.props.refresh;
   }
 
-  componentWillMount() {
-    // this.render();
-  }
-
   updateExercise(e) {
     let suit = e.target.name;
 
@@ -63,32 +59,43 @@ class SetupForm extends Component {
                   }.bind(this);
     return (
       <div className="setup-form">
-        <div className="title">Set up Workout:</div>
         <div className="form-container">
           <form onSubmit={ onSubmit }>
-            <span className="hearts">&hearts;:</span><input type="text"
+            <div className="form-item">
+              <span className="hearts">&hearts;:</span><input type="text"
                                                            value= { heartsExercise }
                                                             name="HEARTS"
                                                         onChange={ onChange }
+                                                        placeholder="HEARTS"
                                                         required />
+                                                      </div>
 
-            <span className="spades">&spades;:</span><input type="text"
-                                                           value= { spadesExercise }
-                                                            name="SPADES"
-                                                        onChange={onChange}
-                                                        required />
+          <div className="form-item">
+            <span className="clubs">&clubs;:</span><input type="text"
+                                                       value= { clubsExercise }
+                                                        name="CLUBS"
+                                                    onChange={onChange}
+                                                    placeholder="CLUBS"
+                                                    required />
+                                                </div>
 
-            <span className="diamonds">&diams;:</span><input type="text"
+            <div className="form-item">
+              <span className="diamonds">&diams;:</span><input type="text"
                                                             value= { diamondsExercise }
                                                              name="DIAMONDS"
                                                          onChange={onChange}
+                                                         placeholder="DIAMONDS"
                                                          required />
-            <span className="clubs">&clubs;:</span><input type="text"
-                                                         value= { clubsExercise }
-                                                          name="CLUBS"
-                                                      onChange={onChange}
-                                                      required />
-                                                    <button onClick={onSubmit} >Start</button>
+                                                     </div>
+            <div className="form-item">
+              <span className="spades">&spades;:</span><input type="text"
+                                                           value= { spadesExercise }
+                                                            name="SPADES"
+                                                        onChange={onChange}
+                                                        placeholder="SPADES"
+                                                        required />
+                                                    </div>
+            <button onChange={ onChange}>Let's do it!</button>
           </form>
         </div>
 

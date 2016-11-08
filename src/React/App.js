@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-// load views
-import Workout from './views/Workout';
-
-//import widgets
+//import components
+import Logo from './components/Logo';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    // console.log('location', this.props.location);
 
     // list of states for application
     this.state = {
@@ -48,9 +48,7 @@ class App extends Component {
     return (
       <div id="app">
         <div className="main-container">
-          <div className="logo-container">
-            <div className="logo">JackedUp</div>
-          </div>
+          <Logo route= {this.props.location }/>
           <div className="dynamic-content">
             {React.cloneElement(this.props.children, { state: this.state,
                                                       refresh: refresh, })}

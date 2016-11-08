@@ -26,11 +26,11 @@ class WorkoutControls extends Component {
   addControls() {
     let controls;
     if (this.props.state === 'INPROGRESS' && !this.props.finish) {
-      controls = <button onClick={ this.props.pause }>
+      controls = <button className="secondary" onClick={ this.props.pause }>
         <i className="fa fa-pause" aria-hidden="true"></i>
       </button>;
     }else if (this.props.state === 'STOPPED') {
-      controls = <button onClick={ this.props.reset }>
+      controls = <button className="secondary" onClick={ this.props.reset }>
         <i className="fa fa-refresh" aria-hidden="true"></i>
       </button>;
     }
@@ -40,9 +40,11 @@ class WorkoutControls extends Component {
   }
 
   render() {
+    let message = this.message();
     return (
       <div className='controls'>
-        <button onClick={ this.props.nextCard }>{ this.message() }</button>
+        <button className={ 'primary' + ' ' + message}
+                onClick={ this.props.nextCard }>{ message }</button>
         { this.addControls() }
       </div>
 

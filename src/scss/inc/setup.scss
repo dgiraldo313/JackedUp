@@ -1,0 +1,66 @@
+#setup{
+  .setup-form{
+    .form-container{
+      form{
+        .form-item{
+          display: block;
+          width: 320px;
+          margin: 15px auto;
+          input,
+          span{
+            display: inline-block;
+            line-height: 30px;
+          }
+          span{
+            // padding-top: 5px;
+            font-size: 30px;
+            margin-right: 10px;
+          }
+          input[type="text"]{
+            width: calc(100% - 75px);
+            border: none;
+            background-color: transparent;
+            outline: none;
+            border-bottom: 2px white solid;
+            color: $white;
+            text-align: center;
+            padding-right: 10px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            &:invalid{
+              box-shadow: none;
+            }
+            &:focus{
+              &::placeholder {
+                font-size: .7em;
+                @include prefix(transform, translateY(-25px));
+                transition: all .3s linear;
+              }
+              &::-webkit-input-placeholder {
+                font-size: .7em;
+                @include prefix(transform, translateY(-25px));
+                transition: all .3s linear;
+
+              }
+              &::-moz-placeholder{
+                font-size: .7em;
+                @include prefix(transform, translateY(-25px));
+                transition: all .3s linear;
+              }
+              &:-ms-input-placeholder{
+                @include prefix(transform, translateY(-25px));
+                transition: all .3s linear;
+              }
+              &:-moz-placeholder{
+                @include prefix(transform, translateY(-25px));
+                transition: all .3s linear;
+              }
+
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

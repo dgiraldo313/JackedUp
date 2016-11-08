@@ -19,8 +19,10 @@ class Setup extends Component {
 
   render() {
     return (
-      <SetupForm refresh= { function (state) { this.refreshState(state); }.bind(this) }
+      <div id="setup">
+        <SetupForm refresh= { function (state) { this.refreshState(state); }.bind(this) }
                    state= { this.props.state }/>
+     </div>
     );
   }
 

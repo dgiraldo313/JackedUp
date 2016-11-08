@@ -72,9 +72,11 @@ class Timer extends Component {
 
   render() {
     return (
-      <div className="stopwatch">
-        <h2>Stopwatch</h2>
-        <div className="stopwatch-time">{ this.formattedTime() }</div>
+      <div className="timer-container">
+        <div className="hanger"></div>
+        <div className="timer">
+          <div className="stopwatch-time">{ this.formattedTime() }</div>
+        </div>
       </div>
     );
   }

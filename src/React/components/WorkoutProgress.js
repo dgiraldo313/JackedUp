@@ -7,7 +7,9 @@ class WorkoutProgress extends Component {
 
   render() {
     return (
-      <div> {this.props.completed + '/' + this.props.totalCards }</div>
+
+        <div> {this.props.completed + '/' + this.props.totalCards }</div>
+
     );
   }
 
