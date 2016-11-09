@@ -13,13 +13,6 @@ class SetupForm extends Component {
     this.refresh = this.props.refresh;
     this.randomizeExercises = this.randomizeExercises.bind(this);
     this.exerciseList = this.props.data;
-
-    console.log(this.exerciseList);
-
-  }
-
-  componentWillMount(){
-    // this.randomizeExercises();
   }
 
   updateExercise(e) {
@@ -73,7 +66,6 @@ class SetupForm extends Component {
     this.props.state.CardsData.DIAMONDS.exercise = this.exerciseList[randomNums[2]];
     this.props.state.CardsData.SPADES.exercise = this.exerciseList[randomNums[3]];
 
-    console.log(this.props.state);
     // refresh state
     this.refresh(this.props.state);
 

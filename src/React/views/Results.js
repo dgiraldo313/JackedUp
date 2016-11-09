@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class Results extends Component {
   render() {
     return (
-      <div>Results Page</div>
+      <div id="results">
+        <div>Results Page Coming Soon</div>
+      </div>
     );
   }
 

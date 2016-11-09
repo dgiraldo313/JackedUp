@@ -13,13 +13,11 @@ class Logo extends Component {
 
     let route = this.props.route.pathname;
 
-    console.log(route);
     let logo = route !== '/' ?
                <div className="logo-icon"></div>
                :
                <div className="logo-main"></div>;
 
-    console.log(logo);
     return logo;
   }
 

@@ -7,8 +7,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    // console.log('location', this.props.location);
-
     // list of states for application
     this.state = {
                   CardsData: {

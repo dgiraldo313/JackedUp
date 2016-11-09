@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import WorkoutProgress from '../components/WorkoutProgress';
 import WorkoutControls from '../components/WorkoutControls';
 import Timer from '../components/Timer';
+import WorkoutStats from '../components/WorkoutStats';
 
 // import Deck component (Builds deck on workout configuration)
 import { BuildDeck } from '../components/Deck';
@@ -254,6 +255,8 @@ class Workout extends Component {
                          pause= {function () { this.pauseWorkout(); }.bind(this)}
                          reset= {function () { this.resetWorkout(); }.bind(this)}
                         />
+
+                      <WorkoutStats data= { this.props.state.CardsData } />
       </div>
     );
   }
