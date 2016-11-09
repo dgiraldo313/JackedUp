@@ -11,6 +11,15 @@ class SetupForm extends Component {
   constructor(props) {
     super(props);
     this.refresh = this.props.refresh;
+    this.randomizeExercises = this.randomizeExercises.bind(this);
+    this.exerciseList = this.props.data;
+
+    console.log(this.exerciseList);
+
+  }
+
+  componentWillMount(){
+    // this.randomizeExercises();
   }
 
   updateExercise(e) {
@@ -36,8 +45,51 @@ class SetupForm extends Component {
     this.refresh(this.props.state);
   }
 
+  randomizeExercises() {
+    const randomNum = () => {
+      let num = Math.floor(Math.random() * this.exerciseList.length);
+      return num;
+    };
+
+    let randomNums = [];
+
+    // pick the 4 exercises
+    let prevNum;
+    for (let i = 0; i < 4; i++) {
+      let num = randomNum();
+
+      //check to make sure num is not repeated
+      while (num === prevNum) {
+        num = randomNum();
+      }
+
+      prevNum = num;
+      randomNums.push(num);
+    }
+
+    //assign exercises
+    this.props.state.CardsData.HEARTS.exercise = this.exerciseList[randomNums[0]];
+    this.props.state.CardsData.CLUBS.exercise = this.exerciseList[randomNums[1]];
+    this.props.state.CardsData.DIAMONDS.exercise = this.exerciseList[randomNums[2]];
+    this.props.state.CardsData.SPADES.exercise = this.exerciseList[randomNums[3]];
+
+    console.log(this.props.state);
+    // refresh state
+    this.refresh(this.props.state);
+
+  }
+
   onSubmit(e) {
     e.preventDefault();
+
+    // check that all fields are filled in
+    if (this.props.state.CardsData.HEARTS.exercise === "" ||
+        this.props.state.CardsData.CLUBS.exercise === "" ||
+        this.props.state.CardsData.DIAMONDS.exercise === "" ||
+        this.props.state.CardsData.SPADES.exercise === "") {
+          alert("Some fields are empty. Please fill them in!");
+          return;
+    }
 
     //send user to workout page
     this.context.router.push('/working');
@@ -95,10 +147,14 @@ class SetupForm extends Component {
                                                         placeholder="SPADES"
                                                         required />
                                                     </div>
-            <button onChange={ onChange}>Let's do it!</button>
           </form>
+          <div className="buttons-container">
+            <button onClick={ onSubmit }>Let's do it!</button>
+            <button className="random" onClick={this.randomizeExercises} >
+              <i className="fa fa-random" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-
       </div>
     );
   }

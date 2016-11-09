@@ -1,7 +1,7 @@
 #setup{
   .setup-form{
     .form-container{
-      form{
+      form {
         .form-item{
           display: block;
           width: 320px;
@@ -59,7 +59,16 @@
             }
           }
         }
-
+      }
+      .buttons-container{
+        width: 200px;
+        margin: auto;
+        .random{
+          width: 45px;
+          margin-left: 5px;
+          background-color: $blue;
+          box-shadow: 0px 5px 0px 0px darken($blue, 10%);
+        }
       }
     }
   }

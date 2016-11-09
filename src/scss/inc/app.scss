@@ -83,12 +83,12 @@ body{
 
     //button
     button{
-      background-color: #5cb85c;
+      background-color: $green;
       height: 40px;
       text-align: center;
       border-radius: 5px;
       border: none;
-      display: block;
+      display: inline-block;
       width: 150px;
       margin: 40px auto 0px;
       cursor: pointer;

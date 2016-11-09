@@ -19,7 +19,7 @@
       display: block;
       width:280px;
       height: 350px;
-      background-color: white;
+      background-color: $white;
       margin:auto;
       border-radius: 10px;
       left: 50%;
@@ -67,6 +67,7 @@
       &#first{
 
         transform: translateY(6px) translateX(calc(-50% - 6px));
+        box-shadow: -.5px 2px 10px 0 darken($background, 20%);
 
       }
       &#second{

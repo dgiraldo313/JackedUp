@@ -21,7 +21,8 @@ class Setup extends Component {
     return (
       <div id="setup">
         <SetupForm refresh= { function (state) { this.refreshState(state); }.bind(this) }
-                   state= { this.props.state }/>
+                   state= { this.props.state }
+                   data= { this.props.route.data }/>
      </div>
     );
   }
