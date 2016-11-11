@@ -70,7 +70,7 @@ class Workout extends Component {
     // add initial card to queue
     let initialCard = { suit: 'start',
                         rank: null,
-                        exercise: 'Click to Start!',
+                        exercise: 'Ready?!',
                         reps: null,
                       };
     this.state.CardsQueue.push(initialCard);

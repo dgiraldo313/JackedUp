@@ -1,7 +1,7 @@
 // animation for left side of panel
 // will open up when page loads
 
-@include keyframes(open-panel-left){
+@include keyframes(expand-button){
   from {
     width: 0%;
   }
@@ -10,7 +10,7 @@
   }
 }
 
-@include keyframes(open-panel-right){
+@include keyframes(shrink-button){
   from {
     width: 100%;
   }
@@ -39,13 +39,13 @@
   }
 }
 
-// slide email container up
-@include keyframes(slide-up){
-    0%   {bottom: -400px;}
-    25%  {bottom: -300px;}
-    50%  {bottom: -100px;}
-    75%  {bottom: -50px;}
-    100% {bottom: 0px;}
+// slide email card result
+@include keyframes(slide-up-result){
+    0%   {transform: translateY(400px);}
+    25%  {transform: translateY(100px)}
+    50%  {transform: translateY(50px)}
+    75%  {transform: translateY(25px)}
+    100% {transform: translateY(0px)}
 }
 
 // flikering animation for atention to email widget
@@ -69,4 +69,18 @@
   80%{opacity: .8;}
   90%{opacity: .9;}
   100%{opacity: 1;}
+}
+
+@include keyframes(outline-border) {
+  25%  {border-top-color: #91cf91;}
+  50%  {border-top-color: #91cf91;
+    border-right-color: #91cf91;}
+  75%  {border-top-color: #91cf91;
+    border-right-color: #91cf91;
+    border-bottom-color: #91cf91;}
+  100% {
+    border-top-color: #91cf91;
+      border-right-color: #91cf91;
+      border-bottom-color: #91cf91;
+      border-left-color: #91cf91;}
 }

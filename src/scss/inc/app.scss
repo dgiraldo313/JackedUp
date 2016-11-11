@@ -13,14 +13,7 @@ body{
       flex-direction: column;
       justify-content: center;
       margin: auto;
-      // @include media-query(tablet){
-      //   padding-right: 20px;
-      //   padding-left: 20px;
-      // }
-      // @include media-query(phone){
-      //   padding-right: 10px;
-      //   padding-left: 10px;
-      // }
+
       .logo-main{
         display: block;
         height: 80px;
@@ -43,28 +36,32 @@ body{
         background-size: contain;
         font-size: 3em;
         text-align: center;
+        @include media-query(phone){
+          top:10px;
+          left: 10px;
+        };
       }
       .dynamic-content{
         // min-height: 50vh;
         height: auto;
         // background-color: #FF8D00;
         margin-top: 40px;
+        @include media-query(phone){
+          margin-top: 30px;
+        }
 
       }
     }
     .signature-container{
       // display: none;
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
       @include media-query(phone){
-        bottom: 0;
-        right: 0;
-        top: 10px;
-        left: 10px;
+        display: none;
       }
       i{
-        color: white;
+        color: $white;
         line-height: 24px;
         font-size: 24px;
 
@@ -103,6 +100,11 @@ body{
         @include prefix(transform, translate(0px, 5px));
         box-shadow: 0px .5px 0px 0px;
         outline: none;
+      }
+    }
+    @include media-query(phone){
+      .main-container {
+        max-width: 300px;
       }
     }
   }

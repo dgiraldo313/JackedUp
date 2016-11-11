@@ -52,6 +52,11 @@ class App extends Component {
                                                       refresh: refresh, })}
           </div>
         </div>
+        <div className="signature-container">
+          <a href="http://www.danielgiraldo.com" target="_blacnk">
+            <i className="fa fa-user" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     );
   }

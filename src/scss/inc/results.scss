@@ -1,6 +1,107 @@
 #results{
-    font-size: 4em;
-    color: $white;
-    text-transform: uppercase;
-    text-align: center;
+    .result-message{
+      text-align: center;
+      font-size: 1.5em;
+      text-transform: uppercase;
+      color: $white;
+      text-shadow: -1px 2px 5px darken($background, 50%);
+      @include media-query(phone){
+        font-size: 1em;
+      };
+    }
+
+    .time{
+      font-family: 'Orbitron', sans-serif;
+      background: url('../images/blackboard_texture.png');
+      width: 200px;
+      height: 200px;
+      color: darken($white, 15%);
+      margin: auto;
+      border-radius: 100%;
+      border: 10px solid #a67c52;
+      @include prefix(box-shadow , (inset -3px 8px 5px 0px rgba(0,0,0,0.75) ,
+                                    -.5px 2px 5px 0 darken($background, 50%)));
+      margin-top: 10px;
+
+
+      .final-time{
+        padding-top: 5px;
+        line-height: 200px;
+        text-align: center;
+        font-size: 3em;
+      }
+      @include media-query(phone){
+        width: 150px;
+        height: 150px;
+        .final-time{
+          line-height: 150px;
+          font-size: 2.5em;
+        }
+      };
+
+    }
+
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      width: 100%;
+      margin-top: 40px;
+      // justify-content: center;
+      @include media-query(phone){
+        margin-top: 20px;
+        .stat{
+          font-size: .5em;
+        }
+
+      };
+
+      .stat{
+        width: calc(25% - 20px);
+        text-align: center;
+        background-color: $white;
+        margin-right: 5px;
+        margin-left: 5px;
+        padding: 10px 5px;
+        // font-size: 2em;
+        border-radius: 5px;
+        box-shadow: -.5px 2px 5px 0 darken($background, 50%);
+        transform: translateY(400px);
+        animation: slide-up-result .3s forwards;
+
+        &:nth-child(1){
+          animation-delay: .5s;
+        }
+        &:nth-child(2){
+          animation-delay: .6s;
+        }
+        &:nth-child(3){
+          animation-delay: .7s;
+        }
+        &:nth-child(4){
+          animation-delay: .8s;
+        }
+        &.hearts,
+        &.diamonds{
+          color: $red;
+        }
+        &.spades,
+        &.clubs{
+          color: $black;
+        }
+        .suit{
+          font-size: 3em;
+        }
+        .exercise{
+          font-size: 1em;
+          text-transform: uppercase;
+          word-wrap: break-word;
+        }
+        .reps {
+          font-size: 2em;
+        }
+
+      }
+
+    }
 }

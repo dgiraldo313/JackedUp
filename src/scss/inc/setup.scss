@@ -4,7 +4,6 @@
       form {
         .form-item{
           display: block;
-          width: 320px;
           margin: 15px auto;
           input,
           span{
@@ -19,6 +18,7 @@
           input[type="text"]{
             width: calc(100% - 75px);
             border: none;
+            max-width: 300px;
             background-color: transparent;
             outline: none;
             border-bottom: 2px white solid;

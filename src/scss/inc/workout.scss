@@ -4,6 +4,9 @@
     position: relative;
     display: block;
     min-height: 350px;
+    a{
+      cursor: pointer;
+    }
     li{
       border: 1px solid lighten($black, 40%);
 
@@ -60,8 +63,13 @@
         .exercise{
           font-size: 2em;
           text-transform: uppercase;
+          word-wrap: break-word;
         }
       }
+      @include media-query(phone){
+        height: 320px;
+        width: 240px;
+      };
     }
     li.dec-card{
       &#first{
@@ -142,7 +150,7 @@
     box-shadow: -.5px 2px 10px 0 darken($background, 20%);
   }
 
-  .controls{
+  .controls {
     width: 200px;
     margin: auto;
     button{
@@ -168,13 +176,17 @@
         box-shadow: 0px 5px 0px 0px darken($red, 5%);
       }
     }
+    @include media-query(phone){
+
+
+
+    };
   }
 
   .stats-container {
     display: flex;
     flex-direction: column;
     width: 200px;
-    display: flex;
     justify-content: center;
     position: absolute;
     right: 5%;
@@ -183,21 +195,21 @@
     .stat{
       margin-bottom: 10px;
       text-align: center;
+      font-weight: bold;
       &.hearts,
       &.diamonds{
         color: $red;
       }
       &.spades,
       &.clubs{
-        color: darken($black, 20%);
+        color: darken($white, 5%);
       }
       .suit{
         font-size: 3em;
       }
       .exercise{
-        color: $white;
+        color: darken($black, 50%);
         font-size: 1em;
-        font-weight: bold;
         text-transform: uppercase;
       }
       .reps {
@@ -205,16 +217,41 @@
         width: 100px;
         margin: auto;
         border-bottom: 2px dotted rgba(255, 255, 255, 0.6);
+        &.last{
+          border: none;
+        }
       }
 
     }
   }
+  @include media-query(phone){
+    .card-deck {
+      margin-bottom: 100px;
+    }
+    .controls{
+      position: absolute;
+      bottom: 5px;
+      left: 0px;
+      width: 100%;
+      button{
+        border-radius: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 0px;
 
-  #next{
-    width: 150px;
-    height: 50px;
-    display: block;
-    margin: auto;
-    margin-top: 400px;
-  }
+        &.primary{
+          width: 70%;
+
+        }
+        &.secondary{
+          width: 30%;
+          margin-left: 0px;
+
+        }
+      }
+    }
+    .stats-container {
+      display: none;
+    }
+  };
 }

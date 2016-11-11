@@ -27,8 +27,8 @@ class WorkoutStats extends Component {
         </div>
         <div className="stat spades">
           <div className="suit ">&spades;</div>
-          <div className="exercise">{ this.CardsData.HEARTS.exercise }</div>
-          <div className="reps">{ this.CardsData.HEARTS.reps }</div>
+          <div className="exercise">{ this.CardsData.SPADES.exercise }</div>
+          <div className="reps last">{ this.CardsData.SPADES.reps }</div>
         </div>
       </div>
     );
