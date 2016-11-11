@@ -23,6 +23,9 @@ class Setup extends Component {
         <SetupForm refresh= { function (state) { this.refreshState(state); }.bind(this) }
                    state= { this.props.state }
                    data= { this.props.route.data }/>
+                 <a className="info"
+                    href="https://www.verywell.com/how-to-use-playing-cards-to-create-a-workout-routine-85990"
+                    target="_blank">How does it work? </a>
      </div>
     );
   }
